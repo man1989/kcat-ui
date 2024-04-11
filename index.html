@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="./style.css"></link>
+    <title>kcat-ui</title>
+</head>
+<body>
+    <form method="post">
+        <section>
+            <div class="input-field">
+                <label>
+                    <span>Environment</span>
+                    <select name="env" id="env" data-type="field" required>
+                        <option value="">Select</option>
+                        <option value="int-shore">int-shore</option>
+                        <option value="int-ship">int-ship</option>
+                        <option value="cert-shore">cert-shore</option>
+                        <option value="cert-ship">cert-ship</option>
+                        <option value="prod-shore">prod-shore</option>
+                        <option value="scl">scl</option>
+                        <option value="val">val</option>
+                        <option value="res">res</option>
+                    </select>
+                </label>
+            </div>
+            <div  class="input-field autocomplete">
+                <label for="topic">
+                    <span>Topic</span>
+                    <!-- <input name="topic" id="topic" type="text" value="" data-type="field" required hidden/> -->
+                    <input name="topic" id="topic" type="text" value="" data-type="field" required>
+                </label>
+                <div class="autocomplete-list"></div>
+                <script type="text/template">
+                    <div class="list">{{text}}</div>
+                </script>
+            </div>
+            <div  class="input-field">
+                <label for="from">
+                    <span>From</span>
+                    <input name="from" id="from" type="datetime-local" step="any" value="" data-type="field" required/>
+                </label>
+                <label for="to">
+                    <span>To</span>
+                    <input name="to" id="to"  type="datetime-local" step="any" value="" data-type="field" required/>
+                </label>     
+            </div>
+            <div  class="input-field">
+                <label for="limit">
+                    <span>Limit</span>
+                    <input type="text" id="limit" name="limit" value="100" data-type="field" required/>
+                </label>
+            </div>            
+            <div  class="input-field">
+                <label for="filter">
+                    <span>Filter</span>
+                    <input type="text" id="filter" name="filter" value="" data-type="field"/>
+                </label>
+            </div>
+        </section>
+        <div class="action">
+            <button type="submit">Send</button>
+        </div>
+    </form>
+    <div class="output">
+        <pre id="response"></pre>
+    </div>
+    <script type="text/javascript" src="./renderer/renderer.js"></script>
+</body>
+</html>
